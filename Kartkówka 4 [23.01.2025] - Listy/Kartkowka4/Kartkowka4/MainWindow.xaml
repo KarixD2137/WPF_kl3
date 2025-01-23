@@ -1,0 +1,50 @@
+﻿<Window x:Class="Kartkowka4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kartkowka4"
+        mc:Ignorable="d"
+        Title="Lista przepisów" Height="450" Width="800">
+    <StackPanel>
+        <DataGrid ItemsSource="{Binding Przepisy}"
+                  AutoGenerateColumns="False"
+                  AlternatingRowBackground="AliceBlue">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nazwa" Binding="{Binding Nazwa}"/>
+                <DataGridComboBoxColumn Header="Kategoria" x:Name="DataGridComboBoxKategoria" SelectedValueBinding="{Binding Kategoria}"/>
+                <DataGridTextColumn Header="Składniki" Binding="{Binding Skladniki}"/>
+                <DataGridTextColumn Header="Na ile osób" Binding="{Binding NaIleOsob}"/>
+                <DataGridCheckBoxColumn Header="Czy bezglutenowe" Binding="{Binding CzyBezglutenowe}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Separator Margin="30"/>
+        <Grid MaxWidth="400">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontWeight="Bold" Margin="10">Dodaj nowy przepis</Label>
+            <Label Grid.Row="1" Grid.Column="0">Nazwa</Label>
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="tb_Nazwa"></TextBox>
+            <Label Grid.Row="2" Grid.Column="0">Kategoria</Label>
+            <ComboBox Grid.Row="2" Grid.Column="1" x:Name="cmb_Kategoria" ItemsSource="{Binding Kategorie}"></ComboBox>
+            <Label Grid.Row="3" Grid.Column="0">Składniki</Label>
+            <TextBox Grid.Row="3" Grid.Column="1" x:Name="tb_skladniki"></TextBox>
+            <Label Grid.Row="4" Grid.Column="0">Na ile osób</Label>
+            <TextBox Grid.Row="4" Grid.Column="1" x:Name="tb_na_ile_osob"></TextBox>
+            <Label Grid.Row="5" Grid.Column="0">Czy bezglutenowe</Label>
+            <CheckBox Grid.Row="5" Grid.Column="1" x:Name="ckb_czy_bezglutenowe"></CheckBox>
+            <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Height="30" Click="DodajPrzepis">Dodaj przepis</Button>
+        </Grid>
+    </StackPanel>
+</Window>
